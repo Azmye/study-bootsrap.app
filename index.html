@@ -36,9 +36,9 @@
     </nav>
     <!--Jumbotron-->
     <section class="jumbotron text-center">
-      <img class="img-thumbnail rounded-circle" src="img/profile-dummy.png" alt="Muhammad Azmi" data-aos="slide-left" />
+      <img class="img-thumbnail rounded-circle" src="img/profile-dummy.png" alt="Muhammad Azmi" />
       <h1>Muhammad Azmi</h1>
-      <p class="lead">Software Engineer | Web Developer</p>
+      <p class="lead"></p>
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
         <path
           fill="#fff"
@@ -56,10 +56,12 @@
           </div>
         </div>
         <div class="row justify-content-center fs-5 text-center">
-          <div class="col-md-4">
+          <div class="col-md-4" data-aos="fade-right" data-aos-duration="2000">
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Non reiciendis officia quam saepe explicabo amet! Inventore eos rerum repudiandae doloremque.</p>
           </div>
-          <div class="col-md-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat illo voluptatum dolor, assumenda illum, quam a odio, fuga magnam perferendis ab et neque deserunt modi.</div>
+          <div class="col-md-4" data-aos="fade-left" data-aos-duration="2000" data-aos-delay="200">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat illo voluptatum dolor, assumenda illum, quam a odio, fuga magnam perferendis ab et neque deserunt modi.
+          </div>
         </div>
       </div>
     </section>
@@ -75,10 +77,10 @@
       <div class="container mb-3">
         <div class="row text-center mb-3">
           <div class="col">
-            <h2>My Projects Gallery</h2>
+            <h2>My Projects</h2>
           </div>
         </div>
-        <div class="row justify-content-center fs-5 text-center">
+        <div class="row justify-content-center fs-5 text-center" data-aos="zoom-out" data-aos-duration="1000">
           <div class="col-md-4 mb-3">
             <div class="card" style="">
               <img src="img/alex-diaz-PhVxCsf4iAo-unsplash.jpg" class="card-img-top" alt="Projects" />
@@ -129,6 +131,58 @@
         ></path>
       </svg>
     </section>
+    <!--Gallery-->
+    <section id="gallery">
+      <div class="container">
+        <div class="row text-center">
+          <div class="col">
+            <h2>Gallery</h2>
+          </div>
+        </div>
+        <div class="row justify-content-center">
+          <div class="col-md-3">
+            <a href="">
+              <img class="img-fluid gallery-img" src="img/olivie-strauss-B-8xjbRshys-unsplash.jpg" alt="my gallery" />
+            </a>
+          </div>
+          <div class="col-md-3">
+            <a href="">
+              <img class="img-fluid gallery-img" src="img/mailchimp-Hv9CS6KZayQ-unsplash.jpg" alt="my gallery" />
+            </a>
+          </div>
+          <div class="col-md-3">
+            <a href="">
+              <img class="img-fluid gallery-img" src="img/nick-page-9lcknILFH_M-unsplash.jpg" alt="my gallery" />
+            </a>
+          </div>
+          <div class="col-md-3">
+            <a href="">
+              <img class="img-fluid gallery-img" src="img/taylor-beach-PRFkOuzz5Bc-unsplash.jpg" alt="my gallery" />
+            </a>
+          </div>
+          <div class="col-md-3">
+            <a href="">
+              <img class="img-fluid gallery-img" src="img/raphael-wild-lVaySsrRcqE-unsplash.jpg" alt="my gallery" />
+            </a>
+          </div>
+          <div class="col-md-3">
+            <a href="">
+              <img class="img-fluid gallery-img" src="img/hans-isaacson-KgeHN4nP1n4-unsplash.jpg" alt="my gallery" />
+            </a>
+          </div>
+          <div class="col-md-3">
+            <a href="">
+              <img class="img-fluid gallery-img" src="img/claudio-schwarz-GlUW6FVCdgA-unsplash.jpg" alt="my gallery" />
+            </a>
+          </div>
+          <div class="col-md-3">
+            <a href="">
+              <img class="img-fluid gallery-img" src="img/nicholas-ledoux-uY4Od-XJAY0-unsplash.jpg" alt="my gallery" />
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
     <!--Contact-->
     <section id="contact">
       <div class="container">
@@ -172,7 +226,25 @@
     <!--Aos Script-->
     <script src="aos-master/dist/aos.js"></script>
     <script>
-      AOS.init();
+      const galleryImage = document.querySelectorAll(".gallery-img");
+
+      galleryImage.forEach((img, i) => {
+        img.dataset.aos = "fade-left";
+        img.dataset.aosDelay = i * 50;
+        img.dataset.aosDuration = 1000;
+      });
+
+      AOS.init({
+        once: true,
+      });
+    </script>
+    <!--Gsap-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.1/TextPlugin.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.1/gsap.min.js"></script>
+    <script>
+      gsap.from(".jumbotron img", { duration: 1, y: -100, opacity: 0, ease: "bounce" });
+      gsap.registerPlugin(TextPlugin);
+      gsap.to(".lead", { duration: 2, delay: 1.5, text: "Software Engineer | Web Developer" });
     </script>
     <!--Bootstrap Script-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
